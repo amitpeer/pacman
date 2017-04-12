@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="actions.js"></script>
+    <title>Pacman</title>
+</head>
+<body>
+<div id="header">
+    <img id="logo" src="images/logo.png"/>
+    <h1 id="headerTitle"> MS. PACMAN</h1>
+    <h2 id="students"> Amit Peer <br> Adam Zamri</h2>
+</div>
+
+<div id="menu">
+    <ul id="menuList">
+        <li class="menuItem" id="menuWelcome">Welcome</li>
+        <li class="menuItem" id="menuRegister">Register</li>
+        <li class="menuItem" id="menuLogin">Login</li>
+        <li class="menuItem" id="menuAbout">About</li>
+    </ul>
+</div>
+<br>
+<section id="content">
+    <div class="contentDiv" id="welcomeDiv">
+        <h1> Welcome </h1>
+    </div>
+    <div class="contentDiv" id="registerDiv">
+        <h1> Register </h1>
+        <form action id="signupForm">
+            <ul id="registerFormList">
+                <li>
+                    <label><b>First name: </b></label>
+                    <input type="text" placeholder="Enter First name" name="firstName">
+                </li>
+                <li>
+                    <label><b>Last name: </b></label>
+                    <input type="text" placeholder="Enter Last name" name="lastName">
+                </li>
+                <li>
+                    <label><b>Birthday: </b></label>
+                    Day:
+                    <select name="day">
+                        <option value="">select</option>
+                    </select>
+                    Month:
+                    <select name="month">
+                        <option value="">select</option>
+                    </select>
+                    Year:
+                    <select name="year">
+                        <option value="">select</option>
+                    </select>
+                </li>
+                <li>
+                    <label><b>User name</b></label>
+                    <input type="text" placeholder="Enter User name" name="userName">
+                </li>
+                <li>
+                    <label><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email">
+                </li>
+                <li>
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password">
+                </li>
+                <li>
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <button type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div class="contentDiv" id="loginDiv"><h1> Login </h1></div>
+    <div class="contentDiv" id="gameDiv"><h1> Game </h1></div>
+</section>
+
+
+<div id="footer">
+    <h2> Contact us at: ms@pacman.com </h2>
+</div>
+</body>
+</html>
