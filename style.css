@@ -59,6 +59,29 @@ input, label, select {
     list-style-type: none;
 }
 
+.signupbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container {
+    padding: 16px;
+}
+
+option {
+    font-size: 17px;
+}
+
 #footer {
     position: fixed;
     right: 0;
