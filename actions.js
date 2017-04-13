@@ -75,3 +75,6 @@ function pressedLogin(){
     $(".contentDiv").hide();
     $("#loginDiv").show();
 }
+function checkLogin(){
+
+}

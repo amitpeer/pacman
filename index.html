@@ -27,11 +27,8 @@
     <div class="contentDiv" id="welcomeDiv">
         <h1> Welcome </h1>
         <img class="logo"  id="welcomeLogo" src="images/pacmanLogo.png" height="100" width="300" /><br>
-
         <a href='#' class='button' onclick="pressedRegister()">Press To Register</a>
         <a href='#' class='button' onclick="pressedLogin()">Press To Login</a>
-
-
     </div>
     <div class="contentDiv" id="registerDiv">
         <h1> Register </h1>
@@ -83,7 +80,23 @@
             </ul>
         </form>
     </div>
-    <div class="contentDiv" id="loginDiv"><h1> Login </h1></div>
+    <div class="contentDiv" id="loginDiv"><h1> Login </h1>
+        <form action id="signupForm">
+            <label><b>Username: </b></label>
+            <input type="text" placeholder="Enter Username" name="UName">
+            <br>
+            <label><b>Password: </b></label>
+            <input type="password" placeholder="Enter Password" name="pass">
+            <br>
+            <br>
+            <br>
+            <a href='#' class='button' onclick="checkLogin()">Login</a>
+        </form>
+
+
+
+
+    </div>
     <div class="contentDiv" id="gameDiv"><h1> Game </h1></div>
 </section>
 
