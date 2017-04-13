@@ -55,3 +55,9 @@ function pressedLogin(){
 function checkLogin(){
 
 }
+function showAbout() {
+    document.getElementById("aboutModal").showModal();
+}
+    function closeAbout() {
+        document.getElementById("aboutModal").close();
+    }

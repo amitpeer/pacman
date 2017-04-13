@@ -7,6 +7,8 @@
     <script src="jquery.validate.js"></script>
     <script type="text/javascript" src="actions.js"></script>
     <script type="text/javascript" src="signup-form.js"></script>
+
+
     <title>Pacman</title>
 </head>
 <body>
@@ -21,7 +23,7 @@
         <li class="menuItem" id="menuWelcome">Welcome</li>
         <li class="menuItem" id="menuRegister">Register</li>
         <li class="menuItem" id="menuLogin">Login</li>
-        <li class="menuItem" id="menuAbout">About</li>
+        <li class="menuItem" id="menuAbout" onclick="showAbout()">About</li>
     </ul>
 </div>
 <br>
@@ -109,6 +111,16 @@
     </div>
     <div class="contentDiv" id="gameDiv"><h1> Game </h1></div>
 </section>
+
+<!-- Modal -->
+
+
+<dialog id="aboutModal">
+    <h3>This is a dialog window!</h3>
+    <br>
+    <button onclick="closeAbout()">Close dialog</button>
+</dialog>
+
 
 
 <div id="footer">
