@@ -26,6 +26,23 @@ $(document).ready(function () {
         }
     });
 
+
+
+
+
+
+/*
+
+    $(".welcomeButton").click(function (e) {
+        var clicked = $(e.target);
+        $(".contentDiv").hide();
+         if (clicked.is('#regButton')) {
+            $("#registerDiv").show();
+        }
+        else if (clicked.is('#LoginButton')) {
+            $("#loginDiv").show();
+        }
+    });*/
     //initialize birthday input in the register form
 
     //Year:
@@ -49,3 +66,12 @@ $(document).ready(function () {
         $('[name="day"]')[0].add(opt);
     }
 });
+
+function pressedRegister(){
+    $(".contentDiv").hide();
+    $("#registerDiv").show();
+}
+function pressedLogin(){
+    $(".contentDiv").hide();
+    $("#loginDiv").show();
+}
