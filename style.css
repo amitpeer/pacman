@@ -55,15 +55,20 @@ body {
     text-align: center;
 }
 
+#content {
+    padding-bottom: 60px;
+}
+
+#signupTable {
+    padding-left: 35%;
+    empty-cells: show;
+}
+
 input, label, select {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     box-sizing: border-box;
-}
-
-#registerFormList {
-    list-style-type: none;
 }
 
 .signupbtn {
@@ -85,6 +90,10 @@ input, label, select {
     padding: 16px;
 }
 
+.inputTd {
+    width: 500px;
+}
+
 option {
     font-size: 17px;
 }
@@ -96,7 +105,9 @@ option {
     left: 0;
     background-color: #efefef;
     text-align: center;
+    height: 60px;
 }
+
 .button {
     border: 2px solid #0a3c59;
     background: #3e779d;

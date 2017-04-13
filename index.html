@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.validate.js"></script>
     <script type="text/javascript" src="actions.js"></script>
+    <script type="text/javascript" src="signup-form.js"></script>
     <title>Pacman</title>
 </head>
 <body>
@@ -26,62 +28,72 @@
 <section id="content">
     <div class="contentDiv" id="welcomeDiv">
         <h1> Welcome </h1>
-        <img class="logo"  id="welcomeLogo" src="images/pacmanLogo.png" height="100" width="300" /><br>
+        <img class="logo" id="welcomeLogo" src="images/pacmanLogo.png" height="100" width="300"/><br>
         <a href='#' class='button' onclick="pressedRegister()">Press To Register</a>
         <a href='#' class='button' onclick="pressedLogin()">Press To Login</a>
     </div>
     <div class="contentDiv" id="registerDiv">
         <h1> Register </h1>
-        <form action id="signupForm">
-            <ul id="registerFormList">
-                <li>
-                    <label><b>First name: </b></label>
-                    <input type="text" placeholder="Enter First name" name="firstName">
-                </li>
-                <li>
-                    <label><b>Last name: </b></label>
-                    <input type="text" placeholder="Enter Last name" name="lastName">
-                </li>
-                <li>
-                    <label><b>Birthday: </b></label>
-                    <label> Day:
-                        <select name="day">
+        <form action="mailto:amitpeer05@gmail.com" id="signupForm">
+            <table id="signupTable">
+                <tr>
+                    <td><label><b>First name: </b></label></td>
+                    <td class="inputTd"><input type="text" placeholder="Enter First name" id="firstName"
+                                               name="firstName"></td>
+                </tr>
+                <tr>
+                    <td><label><b>Last name: </b></label></td>
+                    <td class="inputTd"><input type="text" placeholder="Enter Last name" id="lastName" name="lastName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label><b>Birthday: </b></label></td>
+                    <td><label> Day:
+                        <select name="day" id="day" class="birth">
                             <option value="">select</option>
                         </select>
-                    </label>
-                    <label> Month:
-                        <select name="month">
+                    </label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label> Month:
+                        <select name="month" id="month" class="birth">
                             <option value="">select</option>
                         </select>
-                    </label>
-                    <label> Year:
-                        <select id="year" name="year">
+                    </label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><label> Year:
+                        <select id="year" name="year" id="year" class="birth">
                             <option value="">select</option>
                         </select>
-                    </label>
-                </li>
-                <li>
-                    <label><b>User name</b></label>
-                    <input type="text" placeholder="Enter User name" name="userName">
-                </li>
-                <li>
-                    <label><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email">
-                </li>
-                <li>
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password">
-                </li>
-                <li>
-                    <div class="clearfix">
+                    </label></td>
+                </tr>
+                <tr>
+                    <td><label><b>User name</b></label></td>
+                    <td><input type="text" placeholder="Enter User name" id="userName" name="userName"></td>
+                </tr>
+                <tr>
+                    <td><label><b>Email</b></label></td>
+                    <td><input type="text" placeholder="Enter Email" id="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label><b>Password</b></label></td>
+                    <td class="inputTd"><input type="password" placeholder="Enter Password" id="password"
+                                               name="password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
                         <button type="submit" class="signupbtn">Sign Up</button>
-                    </div>
-                </li>
-            </ul>
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
     <div class="contentDiv" id="loginDiv"><h1> Login </h1>
-        <form action id="signupForm">
+        <form action id="signinForm">
             <label><b>Username: </b></label>
             <input type="text" placeholder="Enter Username" name="UName">
             <br>
@@ -92,8 +104,6 @@
             <br>
             <a href='#' class='button' onclick="checkLogin()">Login</a>
         </form>
-
-
 
 
     </div>
