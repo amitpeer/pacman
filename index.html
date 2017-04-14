@@ -31,12 +31,14 @@
     <div class="contentDiv" id="welcomeDiv">
         <h1> Welcome </h1>
         <img class="logo" id="welcomeLogo" src="images/pacmanLogo.png" height="100" width="300"/><br>
-        <a href='#' class='button' onclick="pressedRegister()">Press To Register</a>
-        <a href='#' class='button' onclick="pressedLogin()">Press To Login</a>
+        <a href='#' id="welcomeRegister" class='button' onclick="pressedRegister()">Press To Register</a>
+        <a href='#' id="welcomeLogin" class='button' onclick="pressedLogin()">Press To Login</a>
+        <br>
+        <a href='#' id="welcomeDisconnect" class='button' onclick="pressedDisconnect()">LOGOUT</a>
     </div>
     <div class="contentDiv" id="registerDiv">
         <h1> Register </h1>
-        <form action="mailto:amitpeer05@gmail.com" id="signupForm">
+        <form action="mailto: amitpeer05@gmail.com" id="signupForm">
             <table id="signupTable">
                 <tr>
                     <td><label><b>First name: </b></label></td>
@@ -88,19 +90,19 @@
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit" class="signupbtn">Sign Up</button>
+                        <button type="submit" id="loginbtn" class="signupbtn">Sign Up</button>
                     </td>
                 </tr>
             </table>
         </form>
     </div>
     <div class="contentDiv" id="loginDiv"><h1> Login </h1>
-        <form action id="signinForm">
+        <form action id="loginForm">
             <label><b>Username: </b></label>
-            <input type="text" placeholder="Enter Username" name="UName">
+            <input type="text" placeholder="Enter Username" id="loginUser" name="UName">
             <br>
             <label><b>Password: </b></label>
-            <input type="password" placeholder="Enter Password" name="pass">
+            <input type="password" placeholder="Enter Password" id="loginPass" name="pass">
             <br>
             <br>
             <br>
@@ -120,7 +122,6 @@
     <br>
     <button onclick="closeAbout()">Close dialog</button>
 </dialog>
-
 
 
 <div id="footer">

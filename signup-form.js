@@ -1,7 +1,6 @@
 jQuery(document).ready(function () {
 
     //initialize birthday input in the register form
-
     //Year:
     var d = new Date();
     var n = d.getFullYear();
@@ -25,6 +24,7 @@ jQuery(document).ready(function () {
 
 
     //Form validation
+
     $("#signupForm").validate({
         rules: {
             firstName: {
@@ -59,5 +59,12 @@ jQuery(document).ready(function () {
         },
         messages: {}
     });
-    
+
+    $("#signupForm").submit(function (event) {
+        users[$("#userName")[0].value] = $("#password")[0].value;
+        isLoggedIn = true;
+        $("#registerDiv").hide();
+        $("#gameDiv").show();
+    });
 });
+
