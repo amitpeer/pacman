@@ -1,4 +1,4 @@
-jQuery(document).ready(function () {
+$().ready(function () {
 
     //initialize birthday input in the register form
     //Year:
@@ -56,15 +56,25 @@ jQuery(document).ready(function () {
                 minlength: 8,
                 password: true
             }
-        },
-        messages: {}
+        }
     });
 
     $("#signupForm").submit(function (event) {
-        users[$("#userName")[0].value] = $("#password")[0].value;
-        isLoggedIn = true;
-        $("#registerDiv").hide();
-        $("#gameDiv").show();
+        if($("#signupForm").valid()) {
+            users[$("#userName")[0].value] = $("#password")[0].value;
+            isLoggedIn = true;
+            $("#registerDiv").hide();
+            $("#gameDiv").show();
+        }
     });
+
+    // add methods to the validator
+    jQuery.validator.addMethod("password", function (value, element) {
+        return this.optional(element) || /^(?=.*[a-zA-Z])(?=.*\d).*$/.test(value);
+    }, "password should be at least 8 digit and contains letter and numbers");
+
+    jQuery.validator.addMethod("firstLastName", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z]*$/.test(value);
+    }, "Name should contain only letters");
 });
 

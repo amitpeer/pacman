@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script></head>
 
 <body>SCORE:
 <input id="lblScore" type="text"/>
 <br/>
 TIME:
 <input id="lblTime" type="text"/>
+<br/>
+LIVES:
+<div id="lives"></div>
 <br/>
 <canvas id="canvas" height="600" width="900"></canvas>
 
@@ -35,9 +38,10 @@ TIME:
     var rows = 10;
     var cols = 15;
     var ghostsArray;
-    var bonusEaten=false;
+    var bonusEaten = false;
     var bonusImg;
-    var bonus={};
+    var bonus = {};
+
     Start();
 
     function Start() {
@@ -63,8 +67,8 @@ TIME:
             ghostThreeImage = new Image();
             ghostThreeImage.src = "images/ghost3.png";
         }
-        //create cols
 
+        //create cols
         for (var i = 0; i < cols; i++) {
             board[i] = [];
             //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
@@ -101,11 +105,11 @@ TIME:
                     cnt--;
                 }
             }
-            //put bonus in place
-            bonus.i=cols-1;
-            bonus.j=0;
-            //put ghosts in corners
 
+            //put bonus in place
+            bonus.i = cols - 1;
+            bonus.j = 0;
+            //put ghosts in corners
             ghostOne.i = 0;
             ghostOne.j = 0;
             if (numOfGhosts > 1) {
@@ -134,6 +138,12 @@ TIME:
             }
             food_remainTotal--;
         }
+
+        //set lives to 3
+        $("#lives").prepend('<img id="life_1" src="images/emoji.png" style="width: 30px"/>');
+        $("#lives").prepend('<img id="life_2" src="images/emoji.png" style="width: 30px"/>');
+        $("#lives").prepend('<img id="life_3" src="images/emoji.png" style="width: 30px"/>');
+
         keysDown = {};
         addEventListener("keydown", function (e) {
             keysDown[e.keyCode] = true;
@@ -147,7 +157,6 @@ TIME:
     }
 
     function Draw(x) {
-
         canvas.width = canvas.width; //clean board
         context.fillStyle = "black";
         context.fillRect(0, 0, canvas.width, canvas.height);
@@ -170,9 +179,9 @@ TIME:
                     var colorBall;
                     if (board[i][j] === 5)
                         colorBall = "grey";
-                    if (board[i][j] ===15)
+                    if (board[i][j] === 15)
                         colorBall = "green";
-                    if (board[i][j] ===25)
+                    if (board[i][j] === 25)
                         colorBall = "orange";
                     context.fillStyle = colorBall; //color
                     context.fill();
@@ -193,8 +202,8 @@ TIME:
             }
         }
         //draw bonus
-        if(bonusEaten==false){
-            context.drawImage(bonusImg, bonus.i * 60 + 3,bonus.j * 60 + 3, 45, 45);
+        if (bonusEaten == false) {
+            context.drawImage(bonusImg, bonus.i * 60 + 3, bonus.j * 60 + 3, 45, 45);
         }
         //draw ghosts
         context.drawImage(ghostOneImage, ghostOne.i * 60 + 3, ghostOne.j * 60 + 3, 45, 45);
@@ -241,12 +250,12 @@ TIME:
         }
 
         //eat bonus
-        if(bonus.i===pacman.i&&bonus.j===pacman.j&&bonusEaten===false){
-            bonusEaten=true;
-            score=score+50;
+        if (bonus.i === pacman.i && bonus.j === pacman.j && bonusEaten === false) {
+            bonusEaten = true;
+            score = score + 50;
         }
         //meet ghost
-        if (pacman.i === ghostOne.i && pacman.j ===ghostOne.j) {
+        if (pacman.i === ghostOne.i && pacman.j === ghostOne.j) {
             hitGhost();
         }
         else {
@@ -265,33 +274,33 @@ TIME:
             }
         }
     }
-    function moveBonus(){
-        var optionsToMove=[];
-        var moves=0;
+    function moveBonus() {
+        var optionsToMove = [];
+        var moves = 0;
         var chosenDir;
-        if(bonus.i - 1 >= 0 && board[bonus.i - 1][bonus.j] !== 4){
+        if (bonus.i - 1 >= 0 && board[bonus.i - 1][bonus.j] !== 4) {
             optionsToMove.push("left");
             moves++;
         }
-        if(bonus.i + 1 < cols && board[bonus.i + 1][bonus.j] !==4 ){
+        if (bonus.i + 1 < cols && board[bonus.i + 1][bonus.j] !== 4) {
             moves++;
             optionsToMove.push("right");
         }
-        if(bonus.j + 1 < rows && board[bonus.i][bonus.j + 1] !== 4){
+        if (bonus.j + 1 < rows && board[bonus.i][bonus.j + 1] !== 4) {
             moves++;
             optionsToMove.push("down");
         }
-        if(bonus.j -1 >0  && board[bonus.i][bonus.j + 1] !== 4){
+        if (bonus.j - 1 > 0 && board[bonus.i][bonus.j + 1] !== 4) {
             moves++;
             optionsToMove.push("up");
         }
-        chosenDir=Math.floor(Math.random() * moves) ;
-        switch(optionsToMove[chosenDir]){
+        chosenDir = Math.floor(Math.random() * moves);
+        switch (optionsToMove[chosenDir]) {
             case "left":
-                bonus.i-=1;
+                bonus.i -= 1;
                 break;
             case "right":
-                bonus.i+=1;
+                bonus.i += 1;
                 break;
             case "down":
                 bonus.j += 1;
@@ -417,7 +426,21 @@ TIME:
     }
 
     function hitGhost() {
+        var emptyCell = findRandomEmptyCell(board);
+        pacman.i = emptyCell[0];
+        pacman.j = emptyCell[1];
+        //Draw(direction);
         lives--;
+        if (lives == 0){
+            $("#life_3").hide();
+            alert("You Lost!");
+        }
+        if (lives == 2){
+            $("#life_1").hide();
+        }
+        if(lives == 1){
+            $("#life_2").hide();
+        }
     }
 
     /**
