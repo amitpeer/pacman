@@ -3,10 +3,50 @@
 
 <head>    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script></head>
 
-<body>SCORE:
+<body>
+
+
+<div id="game">
+    <h1>Set Your Game</h1>
+    <form action="javascript:Start()">
+        Number of Balls (min 50 max 90):
+        <input type="number" min="50" max="90" name="ballNum" id="ballNum" value="70">
+        <br>
+        Color for 5 points balls:<br>
+        <input type="color" name="color5Ball" id="color5ball" value="#b8b894"><br>
+        Color for 15 points balls:<br>
+        <input type="color" name="color15Ball" id="color15ball" value="#00b300"><br>
+        Color for 25 points balls:<br>
+        <input type="color" name="color25Ball" id="color25ball" value="#ff9900"><br>
+        <br>
+        Time of Game (seconds) :
+        <input type="number" min="60" name="gameTime" id="gameTime" value="60" style="width:33px;">
+        <br>
+        Number of Ghosts:
+        <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1">
+        <br>
+        Difficulty:
+        <select name="Level" id="difficultyLevel">
+            <option value="450">Easy</option>
+            <option value="350">Normal</option>
+            <option value="200">Hard</option>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+
+
+
+
+
+
+<br><br>
+
+SCORE:
 <input id="lblScore" type="text"/>
 <br/>
-TIME:
+Remaining Time:
 <input id="lblTime" type="text"/>
 <br/>
 LIVES:
@@ -25,12 +65,13 @@ LIVES:
     var score;
     var pac_color;
     var start_time;
-    var time_elapsed;
+    var time_remaining;
     var interval;
     var ghostInterval;
     var bonusInterval;
+    var timerInterval;
     var direction = 4;
-    var numOfGhosts = 3;
+    var numOfGhosts ;
     var ghostOneImage;
     var ghostTwoImage;
     var ghostThreeImage;
@@ -41,15 +82,30 @@ LIVES:
     var bonusEaten = false;
     var bonusImg;
     var bonus = {};
+    var audio;
+    var color5ball;
+    var color15ball;
+    var color25ball;
+    var level;
 
-    Start();
+    //Start();
 
     function Start() {
+        //set the var from setting;
+        numOfGhosts=document.getElementById("numOfMonsters").value;
+        time_remaining=document.getElementById("gameTime").value;
+        var food_remainTotal = document.getElementById("ballNum").value;
+        color5ball=document.getElementById("color5ball").value;
+        color15ball=document.getElementById("color15ball").value;
+        color25ball=document.getElementById("color25ball").value;
+        level=document.getElementById("difficultyLevel").value;
+         audio = new Audio('images\\dontstopme.mp3');
+        audio.play();
         board = [];
         score = 0;
         pac_color = "yellow";
         var cnt = 151;
-        var food_remainTotal = 70;
+
         var food5pt = Math.floor(0.6 * food_remainTotal);
         var food15pt = Math.floor(0.3 * food_remainTotal);
         var food25pt = Math.floor(0.1 * food_remainTotal);
@@ -152,16 +208,24 @@ LIVES:
             keysDown[e.keyCode] = false;
         }, false);
         interval = setInterval(UpdatePosition, 100);
-        ghostInterval = setInterval(moveGhosts, 350);
+        ghostInterval = setInterval(moveGhosts, level);
         bonusInterval = setInterval(moveBonus, 350);
-    }
+        timerInterval=setInterval(timer,1000);
 
+    }
+function timer(){
+        time_remaining=time_remaining-1;
+        if(time_remaining<=0){
+            window.clearInterval( timerInterval );
+        }
+
+}
     function Draw(x) {
         canvas.width = canvas.width; //clean board
         context.fillStyle = "black";
         context.fillRect(0, 0, canvas.width, canvas.height);
         lblScore.value = score;
-        lblTime.value = time_elapsed;
+        lblTime.value = time_remaining;
         for (var i = 0; i < cols; i++) {
             for (var j = 0; j < rows; j++) {
                 var center = {};
@@ -178,11 +242,11 @@ LIVES:
                     context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
                     var colorBall;
                     if (board[i][j] === 5)
-                        colorBall = "grey";
+                        colorBall = color5ball;
                     if (board[i][j] === 15)
-                        colorBall = "green";
+                        colorBall = color15ball;
                     if (board[i][j] === 25)
-                        colorBall = "orange";
+                        colorBall = color25ball;
                     context.fillStyle = colorBall; //color
                     context.fill();
                     context.font = '8pt Calibri';
@@ -255,42 +319,46 @@ LIVES:
             score = score + 50;
         }
         //meet ghost
-        if (pacman.i === ghostOne.i && pacman.j === ghostOne.j) {
+        if (pacman.i === ghostOne.i && pacman.j === ghostOne.j||(numOfGhosts>1&&pacman.i === ghostTwo.i && pacman.j === ghostTwo.j)||(numOfGhosts==3&&pacman.i === ghostThree.i && pacman.j === ghostThree.j)) {
             hitGhost();
         }
         else {
             board[pacman.i][pacman.j] = 2;
-            var currentTime = new Date();
-            time_elapsed = (currentTime - start_time) / 1000;
-            if (score >= 150 && time_elapsed <= 10) {
-                pac_color = "green";
-            }
             if (score >= 1050) {
-                window.clearInterval(interval);
-                window.alert("Game completed");
+
+                endGame("Game completed");
             }
             else {
                 Draw(direction);
             }
         }
     }
+    function endGame(message){
+        audio.pause();
+        audio.currentTime=0;
+        window.clearInterval(interval);
+        window.clearInterval(ghostInterval);
+        window.clearInterval(bonusInterval);
+        window.clearInterval(timerInterval);
+        window.alert(message);
+    }
     function moveBonus() {
         var optionsToMove = [];
         var moves = 0;
         var chosenDir;
-        if (bonus.i - 1 >= 0 && board[bonus.i - 1][bonus.j] !== 4) {
+        if (bonus.i - 1 >= 0 && board[bonus.i - 1][bonus.j] != 4) {
             optionsToMove.push("left");
             moves++;
         }
-        if (bonus.i + 1 < cols && board[bonus.i + 1][bonus.j] !== 4) {
+        if (bonus.i + 1 < cols && board[bonus.i + 1][bonus.j] != 4) {
             moves++;
             optionsToMove.push("right");
         }
-        if (bonus.j + 1 < rows && board[bonus.i][bonus.j + 1] !== 4) {
+        if (bonus.j + 1 < rows && board[bonus.i][bonus.j + 1] != 4) {
             moves++;
             optionsToMove.push("down");
         }
-        if (bonus.j - 1 > 0 && board[bonus.i][bonus.j + 1] !== 4) {
+        if (bonus.j - 1 >= 0 && board[bonus.i][bonus.j - 1] != 4) {
             moves++;
             optionsToMove.push("up");
         }
@@ -319,7 +387,7 @@ LIVES:
                 distances[0] = Number.MAX_VALUE;
             }
             else {
-                distances[0] = Math.abs((ghostsArray[ghostIndex].i) - 1 - pacman.i) + Math.abs(ghostsArray[ghostIndex].j - pacman.j);
+                    distances[0] = Math.abs((ghostsArray[ghostIndex].i) - 1 - pacman.i) + Math.abs(ghostsArray[ghostIndex].j - pacman.j);
             }
 
             //check right
@@ -426,6 +494,10 @@ LIVES:
     }
 
     function hitGhost() {
+        audio.pause();
+        var lifeLostSound = new Audio('images\\lostLife.mp3');
+        lifeLostSound.play();
+        audio.play();
         var emptyCell = findRandomEmptyCell(board);
         pacman.i = emptyCell[0];
         pacman.j = emptyCell[1];
@@ -433,7 +505,7 @@ LIVES:
         lives--;
         if (lives == 0){
             $("#life_3").hide();
-            alert("You Lost!");
+            endGame("You Lost!");
         }
         if (lives == 2){
             $("#life_1").hide();
