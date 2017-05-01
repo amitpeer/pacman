@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head>    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script></head>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
 
 <body>
 
@@ -26,7 +28,7 @@
         <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1">
         <br>
         Difficulty:
-        <select name="Level" id="difficultyLevel" >
+        <select name="Level" id="difficultyLevel">
             <option value="450">Easy</option>
             <option value="350" selected="selected">Normal</option>
             <option value="200">Hard</option>
@@ -36,11 +38,6 @@
     </form>
 
 </div>
-
-
-
-
-
 
 
 <br><br>
@@ -73,11 +70,11 @@ LIVES:
     var bonusInterval;
     var timerInterval;
     var direction = 4;
-    var numOfGhosts ;
+    var numOfGhosts;
     var ghostOneImage;
     var ghostTwoImage;
     var ghostThreeImage;
-    var lives ;
+    var lives;
     var rows = 10;
     var cols = 15;
     var ghostsArray;
@@ -94,16 +91,16 @@ LIVES:
 
     function Start() {
         //set the var from setting;
-        numOfGhosts=document.getElementById("numOfMonsters").value;
-        time_remaining=document.getElementById("gameTime").value;
+        numOfGhosts = document.getElementById("numOfMonsters").value;
+        time_remaining = document.getElementById("gameTime").value;
         var food_remainTotal = document.getElementById("ballNum").value;
-        color5ball=document.getElementById("color5ball").value;
-        color15ball=document.getElementById("color15ball").value;
-        color25ball=document.getElementById("color25ball").value;
-        level=document.getElementById("difficultyLevel").value;
+        color5ball = document.getElementById("color5ball").value;
+        color15ball = document.getElementById("color15ball").value;
+        color25ball = document.getElementById("color25ball").value;
+        level = document.getElementById("difficultyLevel").value;
         audio = new Audio('images\\dontstopme.mp3');
         audio.play();
-        lives=3;
+        lives = 3;
         board = [];
         score = 0;
         pac_color = "yellow";
@@ -213,16 +210,16 @@ LIVES:
         interval = setInterval(UpdatePosition, 100);
         ghostInterval = setInterval(moveGhosts, level);
         bonusInterval = setInterval(moveBonus, 350);
-        timerInterval=setInterval(timer,1000);
+        timerInterval = setInterval(timer, 1000);
 
     }
-function timer(){
-        time_remaining=time_remaining-1;
-        if(time_remaining<=0){
-            window.clearInterval( timerInterval );
+    function timer() {
+        time_remaining = time_remaining - 1;
+        if (time_remaining <= 0) {
+            window.clearInterval(timerInterval);
         }
 
-}
+    }
     function Draw(x) {
         canvas.width = canvas.width; //clean board
         context.fillStyle = "black";
@@ -322,7 +319,7 @@ function timer(){
             score = score + 50;
         }
         //meet ghost
-        if (pacman.i === ghostOne.i && pacman.j === ghostOne.j||(numOfGhosts>1&&pacman.i === ghostTwo.i && pacman.j === ghostTwo.j)||(numOfGhosts==3&&pacman.i === ghostThree.i && pacman.j === ghostThree.j)) {
+        if (pacman.i === ghostOne.i && pacman.j === ghostOne.j || (numOfGhosts > 1 && pacman.i === ghostTwo.i && pacman.j === ghostTwo.j) || (numOfGhosts == 3 && pacman.i === ghostThree.i && pacman.j === ghostThree.j)) {
             hitGhost();
         }
         else {
@@ -336,9 +333,9 @@ function timer(){
             }
         }
     }
-    function endGame(message){
+    function endGame(message) {
         audio.pause();
-        audio.currentTime=0;
+        audio.currentTime = 0;
         window.clearInterval(interval);
         window.clearInterval(ghostInterval);
         window.clearInterval(bonusInterval);
@@ -390,7 +387,7 @@ function timer(){
                 distances[0] = Number.MAX_VALUE;
             }
             else {
-                    distances[0] = Math.abs((ghostsArray[ghostIndex].i) - 1 - pacman.i) + Math.abs(ghostsArray[ghostIndex].j - pacman.j);
+                distances[0] = Math.abs((ghostsArray[ghostIndex].i) - 1 - pacman.i) + Math.abs(ghostsArray[ghostIndex].j - pacman.j);
             }
 
             //check right
@@ -506,14 +503,14 @@ function timer(){
         pacman.j = emptyCell[1];
         //Draw(direction);
         lives--;
-        if (lives == 0){
+        if (lives == 0) {
             $("#life_3").hide();
             endGame("You Lost!");
         }
-        if (lives == 2){
+        if (lives == 2) {
             $("#life_1").hide();
         }
-        if(lives == 1){
+        if (lives == 1) {
             $("#life_2").hide();
         }
     }

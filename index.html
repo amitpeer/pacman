@@ -7,6 +7,7 @@
     <script src="jquery.validate.js"></script>
     <script type="text/javascript" src="actions.js"></script>
     <script type="text/javascript" src="signup-form.js"></script>
+    <script type="text/javascript" src="pacman.js"></script>
 
 
     <title>Pacman</title>
@@ -15,7 +16,8 @@
 <header id="header">
     <img class="logo" id="HeaderLogo" src="images/pacmanLogo.png"/>
     <h1 id="headerTitle"> MS. PACMAN</h1>
-    <h2 id="students"> Amit Peer <br> Adam Zamri</h2> </header>
+    <h2 id="students"> Amit Peer <br> Adam Zamri</h2></header>
+    <div id="helloDiv"></div>
 
 <div id="menu">
     <ul id="menuList">
@@ -23,6 +25,7 @@
         <li class="menuItem" id="menuRegister">Register</li>
         <li class="menuItem" id="menuLogin">Login</li>
         <li class="menuItem" id="menuAbout" onclick="showAbout()">About</li>
+        <li class="menuItem" id="menuGame">Game</li>
     </ul>
 </div>
 <br>
@@ -110,7 +113,56 @@
 
 
     </div>
-    <div class="contentDiv" id="gameDiv"><h1> Game </h1></div>
+    <div class="contentDiv" id="gameDiv">
+
+        <div id="gameSettings">
+            <h1>Set Your Game</h1>
+            <form action="JavaScript:Start()">
+                Number of Balls (min 50 max 90):
+                <input type="number" min="50" max="90" name="ballNum" id="ballNum" value="70">
+                <br>
+                Color for 5 points balls:<br>
+                <input type="color" class="settingsInput" name="color5Ball" id="color5ball" value="#b8b894"><br>
+                Color for 15 points balls:<br>
+                <input type="color" class="settingsInput" name="color15Ball" id="color15ball" value="#00b300"><br>
+                Color for 25 points balls:<br>
+                <input type="color" class="settingsInput" name="color25Ball" id="color25ball" value="#ff9900"><br>
+                <br>
+                Time of Game (seconds) :
+                <input type="number" min="60" name="gameTime" id="gameTime" value="60" style="width: 75px">
+                <br>
+                Number of Ghosts:
+                <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1"
+                       style="width: 100px">
+                <br>
+                Difficulty:
+                <select name="Level" id="difficultyLevel">
+                    <option value="450">Easy</option>
+                    <option value="350" selected="selected">Normal</option>
+                    <option value="200">Hard</option>
+                </select>
+                <br>
+                <input type="submit" value="Start New Game">
+            </form>
+        </div>
+
+        <div id="gameContent">
+
+            <div id="gameScore">
+                Score:
+                <input class="scoreInput" id="lblScore" type="text"/>
+                <br/>
+                Time:
+                <input class="scoreInput" id="lblTime" type="text"/>
+                <br/>
+                LIVES:
+                <div id="lives"></div>
+            </div>
+
+            <canvas id="canvas" height="600" width="900"></canvas>
+        </div>
+
+    </div>
 </section>
 
 <!-- Modal -->

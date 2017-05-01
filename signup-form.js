@@ -62,9 +62,9 @@ $().ready(function () {
     $("#signupForm").submit(function (event) {
         if($("#signupForm").valid()) {
             users[$("#userName")[0].value] = $("#password")[0].value;
-            isLoggedIn = true;
             $("#registerDiv").hide();
-            $("#gameDiv").show();
+            userName = $("#userName")[0].value;
+            loggedIn();
         }
     });
 

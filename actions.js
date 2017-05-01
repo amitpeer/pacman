@@ -1,3 +1,5 @@
+var userName;
+
 $(document).ready(function () {
     $("#welcomeDiv").show();
 
@@ -6,6 +8,7 @@ $(document).ready(function () {
     $(".menuItem").click(function (e) {
         var clicked = $(e.target);
         $(".contentDiv").hide();
+
         if (clicked.is('#menuWelcome')) {
             $("#welcomeDiv").show();
             if (isLoggedIn) {
@@ -19,6 +22,7 @@ $(document).ready(function () {
                 $("#welcomeRegister").show();
             }
         }
+
         else if (clicked.is('#menuRegister')) {
             if (!isLoggedIn) {
                 $("#registerDiv").show();
@@ -27,6 +31,7 @@ $(document).ready(function () {
                 $("#gameDiv").show();
             }
         }
+
         else if (clicked.is('#menuLogin')) {
             if (!isLoggedIn) {
                 $("#loginDiv").show();
@@ -35,6 +40,11 @@ $(document).ready(function () {
                 $("#gameDiv").show();
             }
         }
+
+        else if (clicked.is('#menuGame')) {
+            $("#gameDiv").show();
+        }
+
     });
 
     /*
@@ -72,13 +82,12 @@ function pressedLogin() {
 }
 
 function checkLogin() {
-    var userName = $("#loginUser")[0].value;
+    userName = $("#loginUser")[0].value;
     var password = $("#loginPass")[0].value;
     if (users[userName] == password) {
-        isLoggedIn = true;
         alert("Logged in successfully");
         $("#loginDiv").hide();
-        $("#gameDiv").show();
+        loggedIn();
     }
     else {
         alert("Bad user name or password");
@@ -88,9 +97,14 @@ function checkLogin() {
 function pressedDisconnect() {
     if (confirm('Are you sure you want to logout?')) {
         isLoggedIn = false;
-        $("#welcomeDisconnect").hide();
         $("#welcomeLogin").show();
         $("#welcomeRegister").show();
+        $("#menuRegister").show();
+        $("#menuLogin").show();
+        $("#welcomeDisconnect").hide();
+        $("#menuGame").hide();
+        userName = "";
+        $("#helloUserName").remove();
     }
 }
 
@@ -101,4 +115,15 @@ function showAbout() {
 
 function closeAbout() {
     document.getElementById("aboutModal").close();
+}
+
+function loggedIn() {
+    isLoggedIn = true;
+    $("#gameDiv").show();
+    $("#gameSettings").show();
+    $("#gameContent").hide();
+    $("#menuGame").show();
+    $("#menuRegister").hide();
+    $("#menuLogin").hide();
+    $("#helloDiv").append("<b id='helloUserName'> Hello " + userName + "</b>");
 }
