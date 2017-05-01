@@ -1,5 +1,5 @@
 #header {
-    background-color: yellow;
+    background-color: black;
     overflow: hidden;
 }
 
@@ -26,6 +26,7 @@ body {
 #headerTitle {
     float: left;
     margin-left: 30%;
+    color: yellow;
 }
 
 #students {

@@ -26,11 +26,13 @@
         <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1">
         <br>
         Difficulty:
-        <select name="Level" id="difficultyLevel">
+        <select name="Level" id="difficultyLevel" >
             <option value="450">Easy</option>
-            <option value="350">Normal</option>
+            <option value="350" selected="selected">Normal</option>
             <option value="200">Hard</option>
-        <input type="submit" value="Submit">
+        </select>
+        <br>
+        <input type="submit" value="Start New Game">
     </form>
 
 </div>
@@ -75,7 +77,7 @@ LIVES:
     var ghostOneImage;
     var ghostTwoImage;
     var ghostThreeImage;
-    var lives = 3;
+    var lives ;
     var rows = 10;
     var cols = 15;
     var ghostsArray;
@@ -99,8 +101,9 @@ LIVES:
         color15ball=document.getElementById("color15ball").value;
         color25ball=document.getElementById("color25ball").value;
         level=document.getElementById("difficultyLevel").value;
-         audio = new Audio('images\\dontstopme.mp3');
+        audio = new Audio('images\\dontstopme.mp3');
         audio.play();
+        lives=3;
         board = [];
         score = 0;
         pac_color = "yellow";
