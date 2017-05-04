@@ -645,7 +645,7 @@ function GetKeyPressed() {
 function findRandomEmptyCell(board) {
     var i = Math.floor((Math.random() * (cols - 1)) + 1);
     var j = Math.floor((Math.random() * (rows - 1)) + 1);
-    while (board[i][j] !== 0 && board[i][j] !== 4) {
+    while (board[i][j] !== 0) {
         i = Math.floor((Math.random() * (cols - 1)) + 1);
         j = Math.floor((Math.random() * (rows - 1)) + 1);
     }
