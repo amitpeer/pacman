@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: orange;
+    background-image: url(images/Royal.jpg);
 }
 
 .logo {
@@ -25,7 +25,7 @@ body {
 
 #headerTitle {
     float: left;
-    margin-left: 30%;
+    margin-left: 22%;
     color: yellow;
     font-family: David;
     font-weight: bold;
@@ -35,11 +35,7 @@ body {
     letter-spacing: -1px;
     -webkit-text-stroke: 1px white;
     font-size: 60px;
-
-
-
-
-
+    align-content: center;
 }
 
 #students {
@@ -51,23 +47,31 @@ body {
 
 }
 
-#menuList {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /*position: fixed;*/
-    width: 100%;
+#menu {
+    margin-top: 3px;
+    padding: 24px;
+    text-align: center;
+    font-family: 'Myriad Pro';
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
-
+#menu {
+    background:  #5175C0;
+}
 .menuItem {
-    background-color: yellowgreen;
-    float: left;
-    border-right: 1px solid #bbb;
-    border-radius: 10px;
-    width: 14%;
-    font-size: 22px;
-    cursor: pointer;
+    transition: 0.3s ease;
+    background:  #5175C0;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    border-top: 4px solid  #5175C0;
+    border-bottom: 4px solid  #5175C0;
+    padding: 20px 0;
+    margin: 0 20px;
+}
+.menuItem:hover {
+    border-top: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
+    padding: 6px 0;
 }
 
 .contentDiv {
