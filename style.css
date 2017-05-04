@@ -1,6 +1,7 @@
 #header {
     background-color: black;
     overflow: hidden;
+    height:70px;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
 #HeaderLogo {
     alignment: left;
     float: left;
+    height:100px;
 }
 
 #welcomeLogo {
@@ -25,11 +27,28 @@ body {
     float: left;
     margin-left: 30%;
     color: yellow;
+    font-family: David;
+    font-weight: bold;
+    margin-top: 0;
+    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
+    text-shadow: 2px 3px 3px #292929;
+    letter-spacing: -1px;
+    -webkit-text-stroke: 1px white;
+    font-size: 60px;
+
+
+
+
+
 }
 
 #students {
+    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
     float: right;
     padding-right: 50px;
+    font-size: 20px;
+    color: yellow;
+
 }
 
 #menuList {
