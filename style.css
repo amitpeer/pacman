@@ -1,7 +1,7 @@
 #header {
     background-color: black;
     overflow: hidden;
-    height:70px;
+    height: 70px;
 }
 
 body {
@@ -16,13 +16,13 @@ body {
 #HeaderLogo {
     alignment: left;
     float: left;
-    height:100px;
+    height: 100px;
 }
 
 #welcomeLogo {
     margin: 40px;
-    height:220px;
-    width:220px;
+    height: 220px;
+    width: 220px;
     border-radius: 70%;
 }
 
@@ -57,33 +57,43 @@ body {
     font-family: 'Myriad Pro';
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
+
 #menu {
-    background:  #5175C0;
+    background: #5175C0;
 }
-h1{
+
+h1 {
     color: white;
 }
+
 .menuItem {
     transition: 0.3s ease;
-    background:  #5175C0;
+    background: #5175C0;
     color: #ffffff;
     font-size: 20px;
     text-decoration: none;
-    border-top: 4px solid  #5175C0;
-    border-bottom: 4px solid  #5175C0;
+    border-top: 4px solid #5175C0;
+    border-bottom: 4px solid #5175C0;
     padding: 10px 0;
     margin: 0 10px;
 }
+
 .menuItem:hover {
     border-top: 4px solid #ffffff;
     border-bottom: 4px solid #ffffff;
     padding: 6px 0;
 }
-.helloDiv{
+
+.helloDiv {
     float: right;
 }
+
 .contentDiv {
     display: none;
+    text-align: center;
+}
+
+#registerDiv {
     text-align: center;
 }
 
@@ -94,6 +104,16 @@ h1{
 #signupTable {
     padding-left: 35%;
     empty-cells: show;
+}
+
+.birth {
+    margin-left: 50px;
+}
+
+#signupForm {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
 }
 
 input, label, select {
@@ -196,20 +216,24 @@ option {
     width: 100%;
     margin: 0 auto;
 }
+
 #gameSettings, #gameContent {
     min-height: 450px;
     color: white;
     float: left;
 }
+
 #gameSettings {
     width: 20%;
     background-color: #111;
     margin-bottom: 70px;
 }
+
 #gameContent {
     width: 80%;
     position: relative;
 }
+
 #gameScore {
     opacity: 1;
     position: absolute;
@@ -229,7 +253,7 @@ option {
 
 .settingsInput {
     padding: 0;
-    width:  40px;
+    width: 40px;
     height: 40px;
 }
 
