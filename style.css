@@ -149,9 +149,9 @@ option {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #efefef;
+    background-color: #e60000;
     text-align: center;
-    height: 60px;
+    height: 35px;
 }
 
 #welcomeDisconnect {
@@ -161,7 +161,14 @@ option {
 #menuGame {
     display: none;
 }
+h3{
+    font-family: 'Myriad Pro';
+    color: white;
+    size: 15px;
+    vertical-align: top;
+    margin: -2px 0 0 0;
 
+}
 .button {
     border: 2px solid #0a3c59;
     background: #3e779d;

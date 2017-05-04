@@ -669,7 +669,7 @@ function enterSuperManMode() {
     superMan = true;
     audio.pause();
     audioSuperMan.play();
-    setTimeout(function() { stopSuperManMode(); }, 5000);
+    setTimeout(function() { stopSuperManMode(); }, 10000);
     superManPosition = undefined;
 }
 
