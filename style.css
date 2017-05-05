@@ -25,7 +25,12 @@ body {
     width: 220px;
     border-radius: 70%;
 }
-
+.loginDiv{
+    text-align: center;
+    align-content: center;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
 #headerTitle {
     float: left;
     margin-left: 22%;
@@ -49,7 +54,14 @@ body {
     color: yellow;
 
 }
-
+#loginForm{
+    text-align: center;
+    align-content: center;
+    margin-left: 40%;
+}
+#loginButton{
+    margin-top: 2px;
+}
 #menu {
     margin-top: 3px;
     padding: 15px;
@@ -95,19 +107,19 @@ h1 {
     text-align: center;
     padding-top: 0px;
 }
-
+/*
 #registerDiv {
-    text-align: center;
-}
+    text-align: left;
+}*/
 
 #content {
     padding-bottom: 60px;
 }
-
+/*
 #signupTable {
     padding-left: 35%;
     empty-cells: show;
-}
+}*/
 
 .birth {
     margin-left: 50px;
@@ -258,14 +270,21 @@ h3{
     right: 50px;
     top: 5px;
     width: 100px;
-    border: dotted orange;
+    height:150px;
+}
+.gameScore{
+    border: dotted ghostwhite;
 }
 
 .scoreInput {
     border: none;
-    height: 5px;
+    height: 20px;
     width: 70px;
-    background-color: orangered;
+    background-color: white;
+font-size: 16px;
+    font-family: 'Myriad Pro';
+    color: darkred;
+    size: 15px;
 }
 
 /* #### Dark Matter #### */
@@ -320,6 +339,25 @@ h3{
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     background: #DFDFDF;
 }
+.dark-matter input[type="text"],.dark-matter input[type="password"]{
+    border: none;
+    color: #525252;
+    height: 25px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 100%;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    background: #DFDFDF;
+
+
+ }
 .dark-matter select {
     background: #DFDFDF no-repeat right;
     background: #DFDFDF  no-repeat right;

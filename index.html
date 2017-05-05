@@ -35,8 +35,9 @@
         <a href='#' id="welcomeDisconnect" class='button' onclick="pressedDisconnect()">LOGOUT</a>
     </div>
     <div class="contentDiv" id="registerDiv">
+
         <h1> Register </h1>
-        <form action="mailto: amitpeer05@gmail.com" id="signupForm">
+        <form action="mailto: amitpeer05@gmail.com" id="signupForm" class="dark-matter">
             <table id="signupTable">
                 <tr>
                     <td><label><b>First name: </b></label></td>
@@ -95,19 +96,16 @@
         </form>
     </div>
     <div class="contentDiv" id="loginDiv"><h1> Login </h1>
-        <form action id="loginForm">
+        <form action id="loginForm" class="dark-matter">
             <label><b>Username: </b></label>
             <input type="text" placeholder="Enter Username" id="loginUser" name="UName">
-            <br>
+
             <label><b>Password: </b></label>
             <input type="password" placeholder="Enter Password" id="loginPass" name="pass">
-            <br>
-            <br>
-            <br>
-            <a href='#' class='button' onclick="checkLogin()">Login</a>
+            <br><br><br>
+            <a href='#' class='button' id="loginButton" onclick="checkLogin()">Login</a>
+            <br><br><br>
         </form>
-
-
     </div>
 
     <div class="contentDiv" id="gameDiv">
@@ -154,15 +152,21 @@
         </div>
 
         <div id="gameContent">
-            <div id="gameScore">
-                Score:
-                <input class="scoreInput" id="lblScore" type="text"/>
+            <div id="gameScore" class="gameScore">
+                <h3>Score:</h3>
+                <input class="scoreInput" id="lblScore" type="text" readonly/>
                 <br/>
-                Time:
-                <input class="scoreInput" id="lblTime" type="text"/>
                 <br/>
-                LIVES:
-                <div id="lives"></div>
+                <h3>Time:</h3>
+                <input class="scoreInput" id="lblTime" type="text" readonly/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="gameScore" id="lives">
+                    <h3>Lives:</h3>
+                </div>
+                <br>
             </div>
 
             <canvas id="canvas" height="500" width="750"></canvas>
