@@ -47,8 +47,6 @@ var superManPosition;
 function Start() {
 
     resetGame();
-
-    // $("#gameSettings").hide();
     $("#gameContent").show();
 
     canvas = document.getElementById('canvas');

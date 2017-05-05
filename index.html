@@ -24,8 +24,8 @@
     <a class="menuItem" href="#" id="menuAbout" onclick="showAbout()">About</a>
 </div>
 <br>
-<div id="helloDiv"></div>
 <section id="content">
+    <div id="helloDiv"></div>
     <div class="contentDiv" id="welcomeDiv">
         <h1> Welcome </h1>
         <img class="logo" id="welcomeLogo" src="images/pacmanAnimation.gif"/><br>
@@ -112,33 +112,44 @@
 
     <div class="contentDiv" id="gameDiv">
         <div id="gameSettings">
-            <h1>Set Your Game</h1>
-            <form action="JavaScript:Start()">
-                Number of Balls (min 50 max 90):
-                <input type="number" min="50" max="90" name="ballNum" id="ballNum" value="70">
-                <br>
-                Color for 5 points balls:<br>
-                <input type="color" class="settingsInput" name="color5Ball" id="color5ball" value="#b8b894"><br>
-                Color for 15 points balls:<br>
-                <input type="color" class="settingsInput" name="color15Ball" id="color15ball" value="#00b300"><br>
-                Color for 25 points balls:<br>
-                <input type="color" class="settingsInput" name="color25Ball" id="color25ball" value="#ff9900"><br>
-                <br>
-                Time of Game (seconds) :
-                <input type="number" min="60" name="gameTime" id="gameTime" value="60" style="width: 75px">
-                <br>
-                Number of Ghosts:
-                <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1"
-                       style="width: 100px">
-                <br>
-                Difficulty:
-                <select name="Level" id="difficultyLevel">
-                    <option value="6">Easy</option>
-                    <option value="3" selected="selected">Normal</option>
-                    <option value="1">Hard</option>
-                </select>
-                <br>
-                <input type="submit" value="Start New Game">
+            <form action="Javascript:Start()" class="dark-matter">
+                <h1>Start New Game
+
+                </h1>
+                <label>
+                    <span>Number Of Balls :</span>
+                    <input type="number" min="50" max="90" name="ballNum" id="ballNum" value="70">
+                </label>
+
+                <label>
+                    <span>Color Of Balls :</span>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5pt    &nbsp;   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   15pt &nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   25pt</label>
+                    <input type="color" class="settingsInput" name="color5Ball" id="color5ball" value="#b8b894">
+
+                    <input type="color" class="settingsInput" name="color15Ball" id="color15ball" value="#00b300">
+                    <input type="color" class="settingsInput" name="color25Ball" id="color25ball" value="#ff9900"
+                </label>
+
+                <label>
+                    <span>Time of Game (seconds) :</span>
+                    <input type="number" min="60" name="gameTime" id="gameTime" value="60">
+                </label>
+                <label>
+                    <span>Number Of Ghosts</span>
+                    <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1">
+                </label>
+                <label>
+                    <span>Difficulty :</span>
+                    <select name="Level" id="difficultyLevel">
+                        <option value="6">Easy</option>
+                        <option value="3" selected="selected">Normal</option>
+                        <option value="1">Hard</option>
+                    </select>
+                </label>
+                <label>
+                    <span>&nbsp;</span>
+                    <input type="submit" class="buttonForm" value="Start New Game"/>
+                </label>
             </form>
         </div>
 
