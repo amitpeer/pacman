@@ -15,6 +15,8 @@ $(document).ready(function () {
                 $("#welcomeDisconnect").show();
                 $("#welcomeLogin").hide();
                 $("#welcomeRegister").hide();
+                $("#menuGame").show();
+                stopGame();
             }
             else {
                 $("#welcomeDisconnect").hide();
@@ -44,20 +46,7 @@ $(document).ready(function () {
         else if (clicked.is('#menuGame')) {
             $("#gameDiv").show();
         }
-
     });
-
-    /*
-     $(".welcomeButton").click(function (e) {
-     var clicked = $(e.target);
-     $(".contentDiv").hide();
-     if (clicked.is('#regButton')) {
-     $("#registerDiv").show();
-     }
-     else if (clicked.is('#LoginButton')) {
-     $("#loginDiv").show();
-     }
-     });*/
 });
 
 var isLoggedIn = false;
@@ -103,18 +92,28 @@ function pressedDisconnect() {
         $("#menuLogin").show();
         $("#welcomeDisconnect").hide();
         $("#menuGame").hide();
+        $("#gameDiv").hide();
+        $("#welcomeDiv").show();
         userName = "";
         $("#helloUserName").remove();
+        stopGame();
     }
 }
 
 
 function showAbout() {
     document.getElementById("aboutModal").showModal();
+    stopGame();
 }
 
 function closeAbout() {
     document.getElementById("aboutModal").close();
+    if(isLoggedIn) {
+        $("#gameDiv").show();
+    }
+    else {
+        $("#welcomeDiv").show();
+    }
 }
 
 function loggedIn() {
@@ -125,5 +124,6 @@ function loggedIn() {
     $("#menuGame").show();
     $("#menuRegister").hide();
     $("#menuLogin").hide();
-    $("#helloDiv").append("<b id='helloUserName'> Hello " + userName + "</b>");
+    $("#helloDiv").append("<div id='helloUserName'><b> Hello " + userName + ".</b> <a id='logoutHref'" +
+        " onClick='pressedDisconnect();'>disconnect?</a></div>");
 }

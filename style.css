@@ -25,12 +25,14 @@ body {
     width: 220px;
     border-radius: 70%;
 }
-.loginDiv{
+
+.loginDiv {
     text-align: center;
     align-content: center;
     padding-bottom: 50px;
     margin-bottom: 50px;
 }
+
 #headerTitle {
     float: left;
     margin-left: 22%;
@@ -54,14 +56,17 @@ body {
     color: yellow;
 
 }
-#loginForm{
+
+#loginForm {
     text-align: center;
     align-content: center;
     margin-left: 40%;
 }
-#loginButton{
+
+#loginButton {
     margin-top: 2px;
 }
+
 #menu {
     margin-top: 3px;
     padding: 15px;
@@ -107,6 +112,7 @@ h1 {
     text-align: center;
     padding-top: 0px;
 }
+
 /*
 #registerDiv {
     text-align: left;
@@ -115,6 +121,7 @@ h1 {
 #content {
     padding-bottom: 60px;
 }
+
 /*
 #signupTable {
     padding-left: 35%;
@@ -130,6 +137,7 @@ h1 {
     text-align: left;
     width: 100%;
 }
+
 /*
 input, label, select {
     padding: 12px 20px;
@@ -159,6 +167,7 @@ input, label, select {
 option {
     font-size: 17px;
 }
+
 #footer {
     position: fixed;
     right: 0;
@@ -176,7 +185,8 @@ option {
 #menuGame {
     display: none;
 }
-h3{
+
+h3 {
     font-family: 'Myriad Pro';
     color: white;
     size: 15px;
@@ -184,6 +194,7 @@ h3{
     margin: -2px 0 0 0;
 
 }
+
 .button {
     border: 2px solid #0a3c59;
     background: #3e779d;
@@ -261,7 +272,7 @@ h3{
 
 #gameContent {
     width: 80%;
-    position:relative;
+    position: relative;
 }
 
 #gameScore {
@@ -270,9 +281,10 @@ h3{
     right: 50px;
     top: 5px;
     width: 100px;
-    height:150px;
+    height: 150px;
 }
-.gameScore{
+
+.gameScore {
     border: dotted ghostwhite;
 }
 
@@ -281,7 +293,7 @@ h3{
     height: 20px;
     width: 70px;
     background-color: white;
-font-size: 16px;
+    font-size: 16px;
     font-family: 'Myriad Pro';
     color: darkred;
     size: 15px;
@@ -300,21 +312,25 @@ font-size: 16px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
 }
+
 .dark-matter h1 {
     padding: 0px 0px 10px 20px;
     display: block;
     border-bottom: 1px solid #444;
     margin: -10px -10px 10px -20px;
 }
-.dark-matter h1>span {
+
+.dark-matter h1 > span {
     display: block;
     font-size: 11px;
 }
+
 .dark-matter label {
     display: block;
     margin: 0px 0px 2px;
 }
-.dark-matter label>span {
+
+.dark-matter label > span {
     float: left;
     width: 40%;
     text-align: right;
@@ -322,11 +338,12 @@ font-size: 16px;
     margin-top: 10px;
     font-weight: bold;
 }
-.dark-matter input[type="number"],  .dark-matter select {
+
+.dark-matter input[type="number"], .dark-matter select {
     border: none;
     color: #525252;
     height: 25px;
-    line-height:15px;
+    line-height: 15px;
     margin-bottom: 16px;
     margin-right: 6px;
     margin-top: 2px;
@@ -339,11 +356,12 @@ font-size: 16px;
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     background: #DFDFDF;
 }
-.dark-matter input[type="text"],.dark-matter input[type="password"]{
+
+.dark-matter input[type="text"], .dark-matter input[type="password"] {
     border: none;
     color: #525252;
     height: 25px;
-    line-height:15px;
+    line-height: 15px;
     margin-bottom: 16px;
     margin-right: 6px;
     margin-top: 2px;
@@ -356,13 +374,13 @@ font-size: 16px;
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     background: #DFDFDF;
 
+}
 
- }
 .dark-matter select {
     background: #DFDFDF no-repeat right;
-    background: #DFDFDF  no-repeat right;
-    appearance:none;
-    -webkit-appearance:none;
+    background: #DFDFDF no-repeat right;
+    appearance: none;
+    -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 0.01px;
     text-overflow: '';
@@ -371,6 +389,7 @@ font-size: 16px;
     color: #525252;
     line-height: 25px;
 }
+
 .dark-matter .buttonForm {
     background: #FFCC02;
     border: none;
@@ -382,11 +401,24 @@ font-size: 16px;
     text-shadow: 1px 1px 1px #FFE477;
     font-weight: bold;
     box-shadow: 1px 1px 1px #3D3D3D;
-    -webkit-box-shadow:1px 1px 1px #3D3D3D;
-    -moz-box-shadow:1px 1px 1px #3D3D3D;
+    -webkit-box-shadow: 1px 1px 1px #3D3D3D;
+    -moz-box-shadow: 1px 1px 1px #3D3D3D;
 }
 
 .dark-matter .buttonForm:hover {
     color: #333;
     background-color: #EBEBEB;
+}
+
+.modal {
+    color: orangered;
+}
+
+#logoutHref:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#aboutModal {
+    background-color: navajowhite;
 }

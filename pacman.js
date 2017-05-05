@@ -12,8 +12,6 @@ var pac_color;
 var start_time;
 var time_remaining;
 var interval;
-var ghostInterval;
-var bonusInterval;
 var timerInterval;
 var direction = 4;
 var numOfGhosts;
@@ -24,6 +22,7 @@ var lives;
 var rows = 15;
 var cols = 22;
 var ghostsArray;
+var ghostsPreviousMove = [-1, -1, -1];
 var bonusEaten = false;
 var bonusImg;
 var bonus = {};
@@ -41,6 +40,7 @@ var size = 33;
 var superMan = false;
 var superManImage;
 var superManPosition;
+var isGamePlaying;
 
 //Start();
 
@@ -62,11 +62,11 @@ function Start() {
     color15ball = document.getElementById("color15ball").value;
     color25ball = document.getElementById("color25ball").value;
     level = document.getElementById("difficultyLevel").value;
-    audio = new Audio('images\\Mozart.mp3');
+    audio = new Audio('images\\Mozart2.mp3');
     audioSuperMan = new Audio('images\\dontstopme.mp3');
     playAudio();
     lives = 3;
-     //board = [];
+    //board = [];
     score = 0;
     pac_color = "yellow";
     var cnt = rows * cols + 1 + numOfGhosts;
@@ -93,42 +93,41 @@ function Start() {
 
     superManImage = new Image();
     superManImage.src = "images/superman.png";
-    board=
-[
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,4,4,4,4,4,4],
-    [0,0,0,0,0,0,0,0,0,4,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,4,0,0,0,0,0],
-    [0,0,0,0,4,4,4,0,0,4,4,4,4,0,0],
-    [0,0,0,0,4,0,4,0,0,0,0,0,4,0,0],
-    [0,4,4,0,4,0,4,0,0,0,0,0,4,0,0],
-    [0,0,4,0,4,0,4,0,0,0,0,0,4,0,0],
-    [0,0,0,0,0,0,4,4,4,4,4,4,4,0,0],
-    [0,0,0,0,0,0,4,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,4,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,4,4,4,4,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,4,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,4,0,0],
-    [0,0,0,0,0,0,4,4,4,4,4,4,4,0,0],
-    [0,0,0,0,0,0,4,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,4,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,4,4,4,4,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,4,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,4,0,0]
+    board =
+        [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 4, 4, 4, 0, 0, 4, 4, 4, 4, 0, 0],
+            [0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 4, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 0, 4, 0, 4, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0]
 
 
+        ]
 
-]
-
-;
+    ;
     //create cols
     for (var i = 0; i < cols; i++) {
 
         //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
         for (var j = 0; j < rows; j++) {
-            if(board[i][j]!==4) {
+            if (board[i][j] !== 4) {
                 if (i == 0 && j == 0 || (numOfGhosts > 1) && i == cols - 1 && j == rows - 1 || numOfGhosts > 2 && i == 0 && j == rows - 1) {
                     if (i == 0 & j == 0) {
                         ghostOne.i = 0;
@@ -390,26 +389,23 @@ function UpdatePosition() {
 }
 
 function endGame(message) {
-    resetAllToNormal();
+    isGamePlaying = false;
+    resetIntervals();
+    resetAudio();
     removeImages();
     window.alert(message);
 }
 
 function resetGame() {
-    resetAllToNormal();
+    isGamePlaying = true;
+    resetIntervals();
+    resetAudio();
     removeImages();
 }
 
-function resetAllToNormal() {
-    if (audio != null) {
-        audio.pause();
-        audio.currentTime = 0;
-    }
-
+function resetIntervals() {
     bonusEaten = false;
     window.clearInterval(interval);
-    window.clearInterval(ghostInterval);
-    window.clearInterval(bonusInterval);
     window.clearInterval(timerInterval);
 }
 
@@ -468,6 +464,7 @@ function moveGhosts() {
     }
 
     var distances = [];
+
     for (var ghostIndex = 0; ghostIndex < numOfGhosts; ghostIndex++) {
         //check left
         if (ghostsArray[ghostIndex].i - 1 < 0 || board[ghostsArray[ghostIndex].i - 1][ghostsArray[ghostIndex].j] === 4 || board[ghostsArray[ghostIndex].i - 1][ghostsArray[ghostIndex].j] === 9) {
@@ -501,15 +498,26 @@ function moveGhosts() {
             distances[3] = Math.abs(ghostsArray[ghostIndex].i - pacman.i) + Math.abs((ghostsArray[ghostIndex].j) - 1 - pacman.j);
         }
 
+        distances = removePreviousGhostLocation(distances, ghostIndex);
+
         //find min distance
         var min = Number.MAX_VALUE;
         var minIndexDirection;
+        var hasFoundMin = false;
         for (var index = 0; index <= 3; index++) {
             if (distances[index] < min) {
                 min = distances[index];
                 minIndexDirection = index;
+                hasFoundMin = true;
             }
         }
+
+        if (!hasFoundMin) {
+            minIndexDirection = goBackWhereYouCameFrom(ghostIndex);
+        }
+
+        ghostsPreviousMove[ghostIndex] = minIndexDirection;
+
         //change ghost location according to min distance to pacman
         switch (minIndexDirection) {
             case 0:
@@ -554,6 +562,39 @@ function moveGhosts() {
     if (checkGhostsMeetPacman()) {
         hitGhost();
     }
+}
+
+function removePreviousGhostLocation(distances, ghostIndex) {
+    if (ghostsPreviousMove[ghostIndex] == 0) {
+        distances[1] = Number.MAX_VALUE;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 1) {
+        distances[0] = Number.MAX_VALUE;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 2) {
+        distances[3] = Number.MAX_VALUE;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 3) {
+        distances[2] = Number.MAX_VALUE;
+    }
+    return distances;
+}
+
+function goBackWhereYouCameFrom(ghostIndex) {
+    var goTo;
+    if (ghostsPreviousMove[ghostIndex] == 0) {
+        goTo = 1;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 1) {
+        goTo = 0;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 2) {
+        goTo = 3;
+    }
+    if (ghostsPreviousMove[ghostIndex] == 3) {
+        goTo = 2;
+    }
+    return goTo;
 }
 
 function checkGhostsMeetPacman() {
@@ -677,6 +718,13 @@ function playAudio() {
     }
 }
 
+function resetAudio() {
+    if (audio != null) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+}
+
 function putSupermanFood() {
     var emptyCell = findRandomEmptyCell(board);
     superManPosition = {};
@@ -702,6 +750,15 @@ function stopSuperManMode() {
 
 function checkBonusMeetPacman() {
     return bonus.i === pacman.i && bonus.j === pacman.j && bonusEaten === false
+}
+
+function stopGame() {
+    resetIntervals();
+    stopSuperManMode();
+    if (audio != null) {
+        audio.pause();
+    }
+    isGamePlaying = false;
 }
 
 //disable scroll through arrow keys

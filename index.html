@@ -22,6 +22,7 @@
     <a class="menuItem" href="#" id="menuRegister">Register</a>
     <a class="menuItem" href="#" id="menuLogin">Login</a>
     <a class="menuItem" href="#" id="menuAbout" onclick="showAbout()">About</a>
+    <a class="menuItem" href="#" id="menuGame">Game</a>
 </div>
 <br>
 <section id="content">
@@ -121,7 +122,8 @@
 
                 <label>
                     <span>Color Of Balls :</span>
-                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5pt    &nbsp;   &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   15pt &nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   25pt</label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5pt &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15pt &nbsp;
+                        &nbsp;&nbsp; &nbsp;&nbsp; 25pt</label>
                     <input type="color" class="settingsInput" name="color5Ball" id="color5ball" value="#b8b894">
 
                     <input type="color" class="settingsInput" name="color15Ball" id="color15ball" value="#00b300">
@@ -134,7 +136,7 @@
                 </label>
                 <label>
                     <span>Number Of Ghosts</span>
-                    <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="1">
+                    <input type="number" min="1" max="3" name="numOfMonsters" id="numOfMonsters" value="3">
                 </label>
                 <label>
                     <span>Difficulty :</span>
@@ -179,9 +181,17 @@
 
 
 <dialog id="aboutModal">
-    <h3>This is a dialog window!</h3>
-    <br>
-    <button onclick="closeAbout()">Close dialog</button>
+    <h3 class="modal">Amit Pe'er & Adam Zamri</h3>
+    <h4 class="modal">
+        Jquery: We used jquery.validate in the registration form.<br>
+        Templates: We did not use any templates. <br>
+        The difficulties we've encountered were the various bugs we've found in the game; <br>
+        Each and every bug was difficult to find and fix - we had to play the game a lot of times in order to find these
+        bugs. <br>
+        We've enjoyed this assignment very much and it was all along fun to create
+        pacman.
+    </h4>
+    <button onclick="closeAbout()">Close</button>
 </dialog>
 
 <footer id="footer">
