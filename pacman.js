@@ -277,10 +277,6 @@ function Draw(x) {
                 context.fillStyle = "darkBlue"; //color
                 context.fill();
             }
-
-            else if (board[i][j] === 8) {
-                context.drawImage(superManImage, i * size + 3, j * size + 3, 0.75 * size, 0.75 * size);
-            }
         }
     }
     //draw bonus
@@ -295,7 +291,7 @@ function Draw(x) {
         context.drawImage(ghostThreeImage, ghostThree.i * size + 3, ghostThree.j * size + 3, 0.85 * size, 0.75 * size);
 
     //draw superman icon
-    if (superManPosition != undefined){
+    if (superManPosition != undefined) {
         context.drawImage(superManImage, superManPosition.i * size + 3, superManPosition.j * size + 3, 0.75 * size, 0.75 * size);
     }
 }
@@ -343,7 +339,7 @@ function UpdatePosition() {
     }
 
     //eat superman
-    if (superManPosition!=undefined && (pacman.i === superManPosition.i && pacman.j === superManPosition.j)){
+    if (superManPosition != undefined && (pacman.i === superManPosition.i && pacman.j === superManPosition.j)) {
         enterSuperManMode();
     }
 
@@ -354,7 +350,7 @@ function UpdatePosition() {
 
     countMoves++;
     board[pacman.i][pacman.j] = 2;
-    if (countMoves % level == 0) {
+    if (countMoves % level == 0 && countMoves > 3) {
         moveGhosts();
     }
     if (countMoves % 2 == 0) {
@@ -667,7 +663,9 @@ function enterSuperManMode() {
     superMan = true;
     audio.pause();
     audioSuperMan.play();
-    setTimeout(function() { stopSuperManMode(); }, 10000);
+    setTimeout(function () {
+        stopSuperManMode();
+    }, 10000);
     superManPosition = undefined;
 }
 
