@@ -754,11 +754,13 @@ function checkBonusMeetPacman() {
 
 function stopGame() {
     resetIntervals();
-    stopSuperManMode();
+    superMan = false;
+    audioSuperMan.pause();
     if (audio != null) {
         audio.pause();
     }
     isGamePlaying = false;
+    $("#gameContent").hide();
 }
 
 //disable scroll through arrow keys
