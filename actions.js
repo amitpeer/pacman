@@ -125,5 +125,5 @@ function loggedIn() {
     $("#menuRegister").hide();
     $("#menuLogin").hide();
     $("#helloDiv").append("<div id='helloUserName'><b> Hello " + userName + ".</b> <a id='logoutHref'" +
-        " onClick='pressedDisconnect();'>disconnect?</a></div>");
+        " onClick='pressedDisconnect();'>     Disconnect</a></div>");
 }

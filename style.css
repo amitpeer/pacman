@@ -349,7 +349,7 @@ h3 {
     margin-top: 2px;
     outline: 0 none;
     padding: 5px 0px 5px 5px;
-    width: 40%;
+    width: 100%;
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -413,7 +413,11 @@ h3 {
 .modal {
     color: orangered;
 }
+#logoutHref{
+    font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
+    color: blue;
 
+}
 #logoutHref:hover {
     text-decoration: underline;
     cursor: pointer;
