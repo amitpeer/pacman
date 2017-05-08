@@ -62,8 +62,8 @@ function Start() {
     color15ball = document.getElementById("color15ball").value;
     color25ball = document.getElementById("color25ball").value;
     level = document.getElementById("difficultyLevel").value;
-    audio = new Audio('images\\Mozart2.mp3');
-    audioSuperMan = new Audio('images\\dontstopme.mp3');
+    audio = new Audio('sounds\\Mozart2.mp3');
+    audioSuperMan = new Audio('sounds\\dontstopme.mp3');
     playAudio();
     lives = 3;
     //board = [];
@@ -655,7 +655,7 @@ function ChangePacmanDir(x, center) {
 function hitGhost() {
     if (!superMan) {
         audio.pause();
-        var lifeLostSound = new Audio('images\\lostLife.mp3');
+        var lifeLostSound = new Audio('sounds\\lostLife.mp3');
         lifeLostSound.play();
         playAudio();
         //Draw(direction);
