@@ -404,6 +404,7 @@ function resetGame() {
 }
 
 function resetIntervals() {
+    superManPosition = undefined;
     bonusEaten = false;
     window.clearInterval(interval);
     window.clearInterval(timerInterval);
