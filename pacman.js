@@ -720,6 +720,9 @@ function playAudio() {
 }
 
 function resetAudio() {
+    if (audioSuperMan != null){
+        audioSuperMan.pause();
+    }
     if (audio != null) {
         audio.pause();
         audio.currentTime = 0;
