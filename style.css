@@ -54,7 +54,6 @@ body {
     padding-right: 50px;
     font-size: 20px;
     color: yellow;
-
 }
 
 #loginForm {
@@ -357,6 +356,11 @@ h3 {
     background: #DFDFDF;
 }
 
+#gameSettings .dark-matter input[type="number"], .dark-matter select {
+
+    width: 40%;
+}
+
 .dark-matter input[type="text"], .dark-matter input[type="password"] {
     border: none;
     color: #525252;
@@ -413,11 +417,13 @@ h3 {
 .modal {
     color: orangered;
 }
-#logoutHref{
+
+#logoutHref {
     font-family: 'Myriad Pro', 'Myriad', helvetica, arial, sans-serif;
     color: blue;
 
 }
+
 #logoutHref:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -425,4 +431,8 @@ h3 {
 
 #aboutModal {
     background-color: navajowhite;
+}
+
+.error {
+    color: orangered;
 }

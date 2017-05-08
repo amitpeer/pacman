@@ -35,7 +35,6 @@ $().ready(function () {
         }
     });
 
-
     // add methods to the validator
     jQuery.validator.addMethod("password", function (value, element) {
         return this.optional(element) || /^(?=.*[a-zA-Z])(?=.*\d).*$/.test(value);
@@ -58,26 +57,44 @@ $().ready(function () {
         }
     });
 
-    //initialize birthday input in the register form
-    //Year:
-    var d = new Date();
-    var n = d.getFullYear();
-    for (var i = n; i >= 1900; i--) {
-        var opt = new Option();
-        opt.value = opt.text = i;
-        $('[name="year"]')[0].add(opt);
+    $(function () {
+        //populate our years select box
+        for (i = new Date().getFullYear(); i > 1900; i--) {
+            $('#years').append($('<option />').val(i).html(i));
+        }
+
+        //"listen" for change events
+        $('#years').change(function () {
+            updateNumberOfMonths();
+        });
+    });
+
+    function updateNumberOfMonths() {
+        //populate our months select box
+        for (i = 1; i < 13; i++) {
+            $('#months').append($('<option />').val(i).html(i));
+        }
+
+        $('#months').change(function () {
+            updateNumberOfDays();
+        });
     }
-    //Month:
-    for (var i = 12; i >= 1; i--) {
-        var opt = new Option();
-        opt.value = opt.text = i;
-        $('[name="month"]')[0].add(opt);
+
+//function to update the days based on the current values of month and year
+    function updateNumberOfDays() {
+        month = $('#months').val();
+        year = $('#years').val();
+        days = daysInMonth(month, year);
+
+        for (i = 1; i < days + 1; i++) {
+            $('#days').append($('<option />').val(i).html(i));
+        }
     }
-    //Day:
-    for (var i = 31; i >= 1; i--) {
-        var opt = new Option();
-        opt.value = opt.text = i;
-        $('[name="day"]')[0].add(opt);
+
+//helper function
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
     }
+
 });
 
