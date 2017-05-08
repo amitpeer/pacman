@@ -426,3 +426,7 @@ h3 {
 #aboutModal {
     background-color: navajowhite;
 }
+
+.error {
+    color:orangered;
+}
